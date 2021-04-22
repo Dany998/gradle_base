@@ -27,7 +27,7 @@ pipeline {
                 sh './gradlew build'
                 
                 script {
-                      dockerImage = docker.build dockerRegistry + ":$BUILD_NUMBER"
+                      dockerImage = docker.build 'gradle_test' + ":$BUILD_NUMBER"
                  }
             }
         }
