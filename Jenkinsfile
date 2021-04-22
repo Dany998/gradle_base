@@ -21,9 +21,10 @@ pipeline {
         stage("Build") {
             
             steps {
-              
-                 script {
-                      sh './gradlew build'
+                
+                sh './gradlew build'
+                
+                script {
                       dockerImage = docker.build dockerRegistry + ":$BUILD_NUMBER"
                  }
             }
