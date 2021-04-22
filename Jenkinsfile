@@ -14,7 +14,7 @@ pipeline {
         stage("Git repo") {
             
             steps {
-                sh 'git clone https://github.com/Dany998/gradle_base.git'
+                git 'https://github.com/Dany998/gradle_base.git'
             }
         }
         
