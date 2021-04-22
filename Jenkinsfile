@@ -14,8 +14,8 @@ pipeline {
         stage("Git repo") {
             
             steps {
-                git 'https://github.com/Dany998/gradle_base.git'
-                git 'update-index --chmod=+x gradlew'
+                sh 'git clone https://github.com/Dany998/gradle_base.git'
+                //git 'update-index --chmod=+x gradlew'
             }
         }
         
