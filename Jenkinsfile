@@ -43,6 +43,7 @@ pipeline {
                 script {
                      docker.withRegistry( '', credentialsId)
                      dockerImage.push()
+                    
                 }
             }
         }
