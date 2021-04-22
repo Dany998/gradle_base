@@ -15,6 +15,7 @@ pipeline {
             
             steps {
                 sh 'git clone https://github.com/Dany998/gradle_base.git'
+                sh 'chmod +x gradlew'
                 //git 'update-index --chmod=+x gradlew'
             }
         }
