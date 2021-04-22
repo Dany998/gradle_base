@@ -22,6 +22,7 @@ pipeline {
             
             steps {
                 
+                git update-index --chmod=+x gradlew
                 sh './gradlew build'
                 
                 script {
