@@ -15,14 +15,14 @@ pipeline {
             
             steps {
                 git 'https://github.com/Dany998/gradle_base.git'
+                git 'update-index --chmod=+x gradlew'
             }
         }
         
         stage("Build") {
             
             steps {
-                
-                git update-index --chmod=+x gradlew
+            
                 sh './gradlew build'
                 
                 script {
