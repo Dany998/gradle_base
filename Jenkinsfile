@@ -2,7 +2,7 @@ pipeline {
     
   environment {
     
-    dockerRegistry = 'https://hub.docker.com/repository/docker/931524/docker_practice'
+    dockerRegistry = '931524/docker_practice'
     credentialsId = 'dockerhub'
     dockerImage = '' 
    
