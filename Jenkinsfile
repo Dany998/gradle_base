@@ -11,6 +11,14 @@ pipeline {
   
     stages {
         
+        stage("Clone) {
+            
+              steps {
+               
+                  git 'https://github.com/Dany998/gradle_base.git'
+              }
+        }
+        
         stage("Build") {
             
             steps {
