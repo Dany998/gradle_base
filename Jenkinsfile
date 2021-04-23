@@ -11,31 +11,13 @@ pipeline {
   
     stages {
         
-        stage("Git repo") {
-            
-            steps {
-                git 'https://github.com/Dany998/gradle_base.git'
-                sh 'chmod +x gradlew'
-                //git 'update-index --chmod=+x gradlew'
-            }
-        }
-        
         stage("Build") {
             
             steps {
-            
-                sh './gradlew build'
                 
                 script {
-                      dockerImage = docker.build 'gradle_test' + ":$BUILD_NUMBER"
+                      dockerImage = docker.build dockerRegistry + ":$BUILD_NUMBER"
                  }
-            }
-        }
-        
-        stage("Test") {
-            
-            steps {
-                sh './gradlew clean test --no-daemon'
             }
         }
         
@@ -48,6 +30,13 @@ pipeline {
                      dockerImage.push()
                     
                 }
+            }
+        }
+        
+        stage('Trash') {
+            
+            steps{
+                sh "docker rmi $dockerRegistry:$BUILD_NUMBER"
             }
         }
     }
