@@ -15,7 +15,7 @@ pipeline {
             
               steps {
                
-                  git 'https://github.com/Dany998/gradle_base.git'
+                   checkout scm
               }
         }
         
