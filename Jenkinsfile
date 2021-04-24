@@ -2,8 +2,8 @@ pipeline {
     
   environment {
     
-    dockerRegistry = '931524/docker_practice'
-    credentialsId = 'dockerhub'
+    registry = "931524/docker_practice"
+    registryCredential = 'dockerhub'
     dockerImage = '' 
    
   }
@@ -11,7 +11,7 @@ pipeline {
   
     stages {
         
-        stage("Clone") {
+        stage('Clone') {
             
               steps {
                
@@ -19,30 +19,28 @@ pipeline {
               }
         }
         
-        stage("Build") {
+        stage('Build') {
             
             steps {
                 
                 script {
-                      dockerImage = docker.build dockerRegistry + ":$BUILD_NUMBER"
+                      dockerImage = docker.build registry + ":$BUILD_NUMBER"
                  }
             }
         }
         
-        stage("Deploy") {
+        stage('Deploy') {
             
             steps {
                 
                 script {
-                     docker.withRegistry('', credentialsId)
+                     docker.withRegistry( '', registryCredential )
                      dockerImage.push()
-                    
                 }
             }
         }
         
         stage('Trash') {
-            
             steps{
                 sh "docker rmi $dockerRegistry:$BUILD_NUMBER"
             }
