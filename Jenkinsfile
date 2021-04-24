@@ -3,7 +3,7 @@ pipeline {
   environment {
     
     dockerRegistry = '931524/docker_practice'
-    credentialsId = 'dockerhub'
+    credentialsId = "dockerhub"
     dockerImage = '' 
    
   }
