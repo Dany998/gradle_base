@@ -44,7 +44,7 @@ pipeline {
         stage('Trash') {
             // <!-------- Removing the image from server ------------>
             steps{
-                sh "docker rmi $dockerRegistry:$BUILD_NUMBER"
+                sh "docker rmi $registry:$BUILD_NUMBER"
             }
         }
     }
