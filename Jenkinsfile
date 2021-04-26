@@ -32,13 +32,13 @@ pipeline {
         stage('Deploy') {
             
             steps {
-             
-                 sh """   
-                     docker.withRegistry('https://hub.docker.com/repository/docker/931524/docker_practice', registryCredential)
-                     dockerImage.push()
-                  """
-                }
+                
+                script {
+                      docker.withRegistry('', registryCredential)
+                      dockerImage.push()
+                }         
             }
+        }
         
         stage('Trash') {
             steps{
