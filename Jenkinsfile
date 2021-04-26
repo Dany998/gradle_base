@@ -14,7 +14,7 @@ pipeline {
         stage('Clone') {
             
               steps {
-               
+               // <!-------- Cloning the repository ------------>
                    checkout scm
               }
         }
@@ -22,7 +22,7 @@ pipeline {
         stage('Build') {
             
             steps {
-                
+                // <!-------- Building the image ------------>
                 script {
                       dockerImage = docker.build registry + ":$BUILD_NUMBER"
                  }
@@ -32,15 +32,17 @@ pipeline {
         stage('Deploy') {
             
             steps {
-                
+                // <!-------- Publishing the image to DockerHub ------------>
                 script {
-                      docker.withRegistry('', registryCredential)
+                      docker.withRegistry('', registryCredential) {
                       dockerImage.push()
+                    }
                 }         
             }
         }
         
         stage('Trash') {
+            // <!-------- Removing the image from server ------------>
             steps{
                 sh "docker rmi $dockerRegistry:$BUILD_NUMBER"
             }
