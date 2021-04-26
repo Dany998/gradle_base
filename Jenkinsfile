@@ -34,7 +34,7 @@ pipeline {
             steps {
                 
                 script {
-                     docker.withRegistry([url: "https://hub.docker.com/repository/docker/931524/docker_practice/", registryCredential])
+                     docker.withRegistry([url: "https://hub.docker.com/repository/docker/931524/docker_practice/", pass: registryCredential])
                      dockerImage.push()
                     }
                 }
