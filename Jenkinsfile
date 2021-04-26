@@ -32,11 +32,11 @@ pipeline {
         stage('Deploy') {
             
             steps {
-                
-                script {
+             
+                 sh """   
                      docker.withRegistry('', registryCredential)
                      dockerImage.push()
-                    }
+                  """
                 }
             }
         
