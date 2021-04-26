@@ -34,8 +34,8 @@ pipeline {
             steps {
                 
                 script {
-                     docker.withRegistry('', registryCredential)
-                     dockerImage.push()
+                     dockerRun = docker.withRegistry('', registryCredential)
+                     dockerImage.push(dockerRun)
                     }
                 }
             }
